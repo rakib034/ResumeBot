@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sarah Johnson - CV</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        .cv-container {
+            max-width: 1000px;
+            margin: 20px auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            background: linear-gradient(180deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sidebar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="80" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="60" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .profile-section {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-picture {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid rgba(255,255,255,0.3);
+            margin: 0 auto 20px;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            backdrop-filter: blur(10px);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { box-shadow: 0 0 20px rgba(255,255,255,0.3); }
+            to { box-shadow: 0 0 30px rgba(255,255,255,0.5); }
+        }
+
+        .profile-name {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .profile-title {
+            font-size: 1rem;
+            opacity: 0.9;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .sidebar-section {
+            margin-bottom: 35px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .sidebar-heading {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid rgba(255,255,255,0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-list {
+            list-style: none;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateX(5px);
+        }
+
+        .contact-icon {
+            width: 30px;
+            height: 30px;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            font-size: 14px;
+        }
+
+        .skill-item {
+            margin-bottom: 20px;
+        }
+
+        .skill-name {
+            font-weight: 500;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .skill-level {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .skill-bar {
+            height: 6px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #fff 0%, #f0f0f0 100%);
+            border-radius: 3px;
+            transition: width 1s ease-in-out;
+            animation: skillLoad 2s ease-in-out;
+        }
+
+        @keyframes skillLoad {
+            from { width: 0%; }
+        }
+
+        .language-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            padding: 8px 12px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 6px;
+        }
+
+        .main-content {
+            padding: 40px;
+            background: white;
+        }
+
+        .main-section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: #1e3c72;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #2a5298;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: #ff6b6b;
+        }
+
+        .summary-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            text-align: justify;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #e0e0e0;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 10px;
+            margin-left: 20px;
+            transition: all 0.3s ease;
+            border-left: 4px solid #2a5298;
+        }
+
+        .timeline-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -34px;
+            top: 30px;
+            width: 12px;
+            height: 12px;
+            background: #2a5298;
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .timeline-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1e3c72;
+            margin-bottom: 5px;
+        }
+
+        .timeline-company {
+            font-size: 1.1rem;
+            color: #2a5298;
+            font-weight: 500;
+        }
+
+        .timeline-date {
+            background: #1e3c72;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .timeline-description {
+            color: #666;
+            line-height: 1.7;
+            margin-top: 15px;
+        }
+
+        .achievements-list {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .achievement {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .achievement::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #2a5298;
+            font-weight: bold;
+        }
+
+        .education-item {
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #ff6b6b;
+            transition: all 0.3s ease;
+        }
+
+        .education-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .certification-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .certification-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .certification-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .cert-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .cert-issuer {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .cv-container {
+                grid-template-columns: 1fr;
+                margin: 10px;
+            }
+            
+            .sidebar {
+                padding: 30px 20px;
+            }
+            
+            .main-content {
+                padding: 30px 20px;
+            }
+            
+            .timeline {
+                padding-left: 20px;
+            }
+            
+            .timeline-item {
+                margin-left: 10px;
+            }
+            
+            .timeline-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .timeline-date {
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cv-container">
+        <div class="sidebar">
+            <div class="profile-section">
+                <div class="profile-picture">👩‍💼</div>
+                <h1 class="profile-name">Sarah Johnson</h1>
+                <p class="summary-text">
+                    Creative and detail-oriented UX/UI Designer with 6+ years of experience creating intuitive digital experiences. 
+                    Proven track record of transforming complex problems into elegant, user-centered solutions. 
+                    Skilled in user research, wireframing, prototyping, and visual design with expertise in modern design tools and methodologies.
+                </p>
+            </div>
+
+            <div class="main-section">
+                <h2 class="section-title">Work Experience</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-title">Senior UX/UI Designer</div>
+                                <div class="timeline-company">Design Studio Pro</div>
+                            </div>
+                            <div class="timeline-date">2021 - Present</div>
+                        </div>
+                        <div class="timeline-description">
+                            Lead design initiatives for multiple high-profile clients, focusing on user-centered design principles and accessibility standards.
+                        </div>
+                        <ul class="achievements-list">
+                            <li class="achievement">Redesigned e-commerce platform increasing conversion rates by 35%</li>
+                            <li class="achievement">Led design system implementation across 5 product teams</li>
+                            <li class="achievement">Mentored 3 junior designers and established design review processes</li>
+                            <li class="achievement">Conducted user research sessions with 200+ participants</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-title">UX Designer</div>
+                                <div class="timeline-company">TechStart Solutions</div>
+                            </div>
+                            <div class="timeline-date">2019 - 2021</div>
+                        </div>
+                        <div class="timeline-description">
+                            Designed user interfaces for web and mobile applications, collaborating closely with development teams to ensure design feasibility.
+                        </div>
+                        <ul class="achievements-list">
+                            <li class="achievement">Created wireframes and prototypes for 15+ digital products</li>
+                            <li class="achievement">Improved user satisfaction scores by 40% through iterative design</li>
+                            <li class="achievement">Established usability testing protocols and best practices</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-title">Junior UI Designer</div>
+                                <div class="timeline-company">Creative Agency Inc.</div>
+                            </div>
+                            <div class="timeline-date">2018 - 2019</div>
+                        </div>
+                        <div class="timeline-description">
+                            Assisted senior designers in creating visual designs for various client projects, focusing on brand consistency and user experience.
+                        </div>
+                        <ul class="achievements-list">
+                            <li class="achievement">Designed UI components for 10+ client websites</li>
+                            <li class="achievement">Collaborated on brand identity projects for startup clients</li>
+                            <li class="achievement">Participated in client presentations and design reviews</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-section">
+                <h2 class="section-title">Education</h2>
+                <div class="education-item">
+                    <div class="timeline-header">
+                        <div>
+                            <div class="timeline-title">Master of Arts in Design</div>
+                            <div class="timeline-company">California Institute of Arts</div>
+                        </div>
+                        <div class="timeline-date">2016 - 2018</div>
+                    </div>
+                    <div class="timeline-description">
+                        Specialized in Human-Computer Interaction and User Experience Design. 
+                        Thesis focused on accessibility in digital interfaces for elderly users.
+                    </div>
+                </div>
+
+                <div class="education-item">
+                    <div class="timeline-header">
+                        <div>
+                            <div class="timeline-title">Bachelor of Fine Arts in Graphic Design</div>
+                            <div class="timeline-company">Art University of California</div>
+                        </div>
+                        <div class="timeline-date">2012 - 2016</div>
+                    </div>
+                    <div class="timeline-description">
+                        Graduated Cum Laude with focus on visual communication and typography. 
+                        Active member of the Design Student Association.
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-section">
+                <h2 class="section-title">Certifications</h2>
+                <div class="certification-grid">
+                    <div class="certification-item">
+                        <div class="cert-name">Google UX Design Certificate</div>
+                        <div class="cert-issuer">Google</div>
+                    </div>
+                    <div class="certification-item">
+                        <div class="cert-name">Adobe Certified Expert</div>
+                        <div class="cert-issuer">Adobe</div>
+                    </div>
+                    <div class="certification-item">
+                        <div class="cert-name">Figma Advanced Certification</div>
+                        <div class="cert-issuer">Figma</div>
+                    </div>
+                    <div class="certification-item">
+                        <div class="cert-name">Accessibility Specialist</div>
+                        <div class="cert-issuer">IAAP</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>="profile-title">UX/UI Designer</p>
+            </div>
+
+            <div class="sidebar-section">
+                <h2 class="sidebar-heading">Contact</h2>
+                <ul class="contact-list">
+                    <li class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div>sarah.johnson@email.com</div>
+                    </li>
+                    <li class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div>+1 (555) 987-6543</div>
+                    </li>
+                    <li class="contact-item">
+                        <div class="contact-icon">🌐</div>
+                        <div>sarahjohnson.design</div>
+                    </li>
+                    <li class="contact-item">
+                        <div class="contact-icon">💼</div>
+                        <div>linkedin.com/in/sarahjohnson</div>
+                    </li>
+                    <li class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>San Francisco, CA</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <h2 class="sidebar-heading">Skills</h2>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>UI/UX Design</span>
+                        <span class="skill-level">Expert</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 95%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>Figma</span>
+                        <span class="skill-level">Advanced</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 90%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>Adobe Creative Suite</span>
+                        <span class="skill-level">Advanced</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>Prototyping</span>
+                        <span class="skill-level">Advanced</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 88%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>HTML/CSS</span>
+                        <span class="skill-level">Intermediate</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 70%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>User Research</span>
+                        <span class="skill-level">Advanced</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 80%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h2 class="sidebar-heading">Languages</h2>
+                <div class="language-item">
+                    <span>English</span>
+                    <span>Native</span>
+                </div>
+                <div class="language-item">
+                    <span>Spanish</span>
+                    <span>Fluent</span>
+                </div>
+                <div class="language-item">
+                    <span>French</span>
+                    <span>Intermediate</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="main-section">
+                <h2 class="section-title">Professional Summary</h2>
+                <p class
