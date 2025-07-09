@@ -1,0 +1,10 @@
+streamlit
+python-docx
+python-dotenv
+groq
+beautifulsoup4
+lxml
+Pillow
+requests
+PyMuPDF
+xhtml2pdf
