@@ -5,9 +5,9 @@ from dotenv import load_dotenv
 from groq import Groq
 import re
 
+
 # Load Groq API key
-load_dotenv()
-GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+GROQ_API_KEY = st.secrets["GROQ_API_KEY"]
 groq_client = Groq(api_key=GROQ_API_KEY)
 
 # Folder paths
