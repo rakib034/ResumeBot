@@ -8,4 +8,4 @@ Pillow
 requests
 PyMuPDF
 xhtml2pdf
-bs4
+beautifulsoup4
