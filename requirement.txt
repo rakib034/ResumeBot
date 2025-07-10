@@ -1,9 +1,0 @@
-streamlit
-python-docx
-python-dotenv
-groq
-lxml
-Pillow
-requests
-PyMuPDF
-html5lib>=1.1
