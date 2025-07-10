@@ -1,6 +1,6 @@
-import os
+'''import os
 import streamlit as st
-#from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup
 from dotenv import load_dotenv
 from groq import Groq
 import re
@@ -577,6 +577,3 @@ st.sidebar.markdown("""
 6. **Preview changes** before saving  
 7. **Save and download** your updated resume  
 """)
-
-
-'''
