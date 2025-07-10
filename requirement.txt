@@ -6,5 +6,4 @@ lxml
 Pillow
 requests
 PyMuPDF
-xhtml2pdf
 beautifulsoup4==4.12.2
