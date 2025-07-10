@@ -335,7 +335,7 @@ st.sidebar.markdown("""
 
 import os
 import streamlit as st
-#from dotenv import load_dotenv
+from dotenv import load_dotenv
 from groq import Groq
 from lxml import html
 import re
