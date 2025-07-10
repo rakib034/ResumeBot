@@ -218,18 +218,6 @@ if selected_file:
                 st.session_state.pop("ai_response", None)
                 st.rerun()
 
-'''# --- File Upload Section ---
-st.sidebar.markdown("---")
-st.sidebar.subheader("📁 Upload New Resume")
-uploaded_file = st.sidebar.file_uploader("Choose an HTML file", type=['html'])
-
-if uploaded_file is not None:
-    file_path = os.path.join(UPLOAD_DIR, uploaded_file.name)
-    with open(file_path, 'wb') as f:
-        f.write(uploaded_file.getbuffer())
-    st.sidebar.success(f"✅ Uploaded: {uploaded_file.name}")
-    st.sidebar.info("Please refresh the page to see the new file.")'''
-
 # --- Sidebar Help ---
 st.sidebar.markdown("---")
 st.sidebar.subheader("📖 How to Use")
