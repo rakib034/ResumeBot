@@ -16,7 +16,7 @@ os.makedirs(UPLOAD_DIR, exist_ok=True)
 os.makedirs(DOWNLOAD_DIR, exist_ok=True)
 
 st.set_page_config(page_title="HTML Resume Editor (Preserve Format)", layout="wide")
-st.title("📄 HTML Resume Editor with AI (Formatting Preserved)")
+st.title("📄 HTML Resume Editor with AI")
 
 # Select file
 html_files = [f for f in os.listdir(UPLOAD_DIR) if f.endswith(".html")]
